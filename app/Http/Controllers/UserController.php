@@ -33,6 +33,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $user->load('posts');
         return response()->json($user, 200);
     }
 
