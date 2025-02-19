@@ -41,10 +41,7 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->update();
+        $user->update($request->validated());
         return response()->json($user, 200);
     }
 
