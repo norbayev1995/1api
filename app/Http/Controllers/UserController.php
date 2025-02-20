@@ -25,7 +25,10 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $user = User::create($request->validated());
-        return response()->json($user, 200);
+        return response()->json([
+            'message' => 'User created successfully',
+            'data' => $user
+        ], 200);
     }
 
     /**
@@ -43,7 +46,10 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->update($request->validated());
-        return response()->json($user, 200);
+        return response()->json([
+            'message' => 'User updated successfully',
+            'data' => $user
+        ], 200);
     }
 
     /**

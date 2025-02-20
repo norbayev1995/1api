@@ -24,7 +24,10 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         $post = Post::create($request->validated());
-        return response()->json($post, 200);
+        return response()->json([
+            'message' => 'Post created successfully',
+            'data' => $post
+        ], 200);
     }
 
     /**
@@ -41,7 +44,10 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         $post->update($request->validated());
-        return response()->json($post, 200);
+        return response()->json([
+            'message' => 'Post updated successfully',
+            'data' => $post
+        ], 200);
     }
 
     /**
